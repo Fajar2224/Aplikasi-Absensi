@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('no_telp');
             $table->string('mapel');
-            $table->foreignId('penggunas_id')->references('id')->on('penggunas')->onDelete('cascade');
+            $table->foreignId('users_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }
