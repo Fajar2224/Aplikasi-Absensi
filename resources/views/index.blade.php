@@ -46,7 +46,16 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper">
+  
+    <div
+      id="main-wrapper"
+      data-layout="vertical"
+      data-navbarbg="skin5"
+      data-sidebartype="full"
+      data-sidebar-position="absolute"
+      data-header-position="absolute"
+      data-boxed-layout="full"
+    >
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
@@ -206,6 +215,15 @@
                         </li>
 
                     </ul>
+                    <ul id="sidebarnav" class="pt-4">
+                        <li class="sidebar-item">
+                            <a
+                                class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{ route('dashboard') }}"
+                                aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">Dashboard</span></a>
+                        </li>
+
+                    </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
                 <!-- End Sidebar navigation -->
@@ -219,6 +237,7 @@
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
+            
             <!-- ============================================================== -->
             <!-- Bread crumb and right sidebar toggle -->
             <!-- ============================================================== -->
@@ -230,14 +249,73 @@
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <div class="container-fluid">
+            <div class="row">
 
                 <!-- ============================================================== -->
                 <!-- Sales Cards  -->
                 <!-- ============================================================== -->
 <h1>Selamat Datang Di Aplikasi Absensi</h1>
+<div class="col-md-6 col-lg-2 col-xlg-3">
+<a href="#">
+              <div class="card card-hover">
+                <div class="box bg-danger text-center">
+                  <h1 class="font-light text-white">
+                    <i class="fas fa-user"></i>
+                  </h1>
+                  <h6 class="text-white">Siswa</h6>
+                </div>
+              </div></a>
+            </div>
+
+<div class="col-md-6 col-lg-2 col-xlg-3">
+    <a href="#">
+              <div class="card-hover">
+                <div class="box bg-success text-center">
+                  <h1 class="font-light text-white">
+                    <i class="fas fa-home"></i>
+                  </h1>
+                  <h6 class="text-white">Kelas</h6>
+                </div>
+              </div></a>
+            </div>
+
+<div class="col-md-6 col-lg-2 col-xlg-3">
+<a href="#">
+              <div class="card card-hover">
+                <div class="box bg-warning text-center">
+                  <h1 class="font-light text-white">
+                  <i class="fas fa-user-circle"></i>
+                  </h1>
+                  <h6 class="text-white">Guru</h6>
+                </div>
+              </div></a>
+            </div>
+<div class="col-md-6 col-lg-2 col-xlg-3">
+<a href="#">
+              <div class="card card-hover">
+                <div class="box bg-cyan text-center">
+                  <h1 class="font-light text-white">
+                  <i class="fas fa-book"></i>
+                  </h1>
+                  <h6 class="text-white">Mapel</h6>
+                </div>
+              </div></a>
+            </div>
+<div class="col-md-6 col-lg-2 col-xlg-3">
+<a href="#">
+              <div class="card card-hover">
+                <div class="box bg-info text-center">
+                  <h1 class="font-light text-white">
+                    <i class="fas fa-address-book"></i>
+                  </h1>
+                  <h6 class="text-white">Absen</h6>
+                </div>
+              </div></a>
+            </div>
                 <!-- ============================================================== -->
                 <!-- Recent comment and chats -->
                 <!-- ============================================================== -->
+            </div>
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
