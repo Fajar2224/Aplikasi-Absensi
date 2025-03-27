@@ -36,6 +36,14 @@
 </head>
 
 <body>
+    @if(Auth::user())
+     @if(Auth::user()->role == 'admin')
+        <script>
+            window.location = "/admin";
+        </script>
+        @endif
+        @endif  
+   
     <div class="main-wrapper">
         <!-- ============================================================== -->
         <!-- Preloader - style you can find in spinners.css -->
@@ -65,10 +73,15 @@
                         <span class="db"><img src="{{ asset('assets/images/logo.png') }}" alt="logo" /></span>
                     </div>
                     <!-- Form -->
-                    <form
-                        class="form-horizontal mt-3"
-                        id="loginform"
-                        action="index.html">
+                     @if(session()->has('loginError'))
+                     <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+                        {{ session()->get('loginError') }}
+                     </div>
+                     @endif
+                    <form action="{{route('auth')}}" method="POST" class="form-horizontal mt-3">
+                       @csrf
                         <div class="row pb-4">
                             <div class="col-12">
                                 <div class="input-group mb-3">
@@ -79,6 +92,7 @@
                                     </div>
                                     <input
                                         type="text"
+                                        name="username"
                                         class="form-control form-control-lg"
                                         placeholder="Username"
                                         aria-label="Username"
@@ -93,6 +107,7 @@
                                     </div>
                                     <input
                                         type="text"
+                                        name="password"
                                         class="form-control form-control-lg"
                                         placeholder="Password"
                                         aria-label="Password"
@@ -101,67 +116,53 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row border-top border-secondary">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <div class="pt-3">
-                                        <button
-                                            class="btn btn-info"
-                                            id="to-recover"
-                                            type="button">
-                                            <i class="mdi mdi-lock fs-4 me-1"></i> Lost password?
-                                        </button>
-                                        <button
-                                            class="btn btn-success float-end text-white"
-                                            type="submit">
-                                            Login
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                        <button type="submit" class="btn btn-block btn-lg btn-info mt-3">Login</button>
                 </div>
-
-                <!-- ============================================================== -->
-                <!-- Login box.scss -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Page wrapper scss in scafholding.scss -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Page wrapper scss in scafholding.scss -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right Sidebar -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Right Sidebar -->
-                <!-- ============================================================== -->
             </div>
-            <!-- ============================================================== -->
-            <!-- All Required js -->
-            <!-- ============================================================== -->
-            <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
-            <!-- Bootstrap tether Core JavaScript -->
-            <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-            <!-- ============================================================== -->
-            <!-- This page plugin js -->
-            <!-- ============================================================== -->
-            <script>
-                $(".preloader").fadeOut();
-                // ============================================================== 
-                // Login and Recover Password
-                // ============================================================== 
-                $("#to-recover").on("click", function() {
-                    $("#loginform").slideUp();
-                    $("#recoverform").fadeIn();
-                });
-                $("#to-login").click(function() {
-                    $("#recoverform").hide();
-                    $("#loginform").fadeIn();
-                });
-            </script>
+        </div>
+    </div>
+    </form>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- Login box.scss -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper scss in scafholding.scss -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page wrapper scss in scafholding.scss -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right Sidebar -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Right Sidebar -->
+    <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- All Required js -->
+    <!-- ============================================================== -->
+    <script src="{{ asset('assets/libs/jquery/dist/jquery.min.js') }}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{{ asset('assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- ============================================================== -->
+    <!-- This page plugin js -->
+    <!-- ============================================================== -->
+    <script>
+        $(".preloader").fadeOut();
+        // ============================================================== 
+        // Login and Recover Password
+        // ============================================================== 
+        $("#to-recover").on("click", function() {
+            $("#loginform").slideUp();
+            $("#recoverform").fadeIn();
+        });
+        $("#to-login").click(function() {
+            $("#recoverform").hide();
+            $("#loginform").fadeIn();
+        });
+    </script>
 </body>
 
 </html>
