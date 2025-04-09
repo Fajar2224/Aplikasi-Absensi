@@ -92,7 +92,7 @@
                         <!-- ============================================================== -->
                       <form action = "{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="btn btn-danger">Logout</button>
+                        <button type="submit" class="btn btn-danger"><i class="mdi mdi-logout"></i>  Logout</button>
                       </form>
                         <!-- ============================================================== -->
                         <!-- User profile and search -->
@@ -128,7 +128,7 @@
                             <a
                                 class="sidebar-link waves-effect waves-dark sidebar-link"
                                 href="{{ route('dashboard') }}"
-                                aria-expanded="false"><i class="mdi mdi-steam"></i><span class="hide-menu">Dashboard</span></a>
+                                aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">Settings</span></a>
                         </li>
 
                     </ul>

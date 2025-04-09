@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LokalController;
+use App\Http\Controllers\SiswaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,7 +33,7 @@ Route::post('auth',[LoginController::class,
 
 Route::post('logout',[LoginController::class,
 'logout'])->name('logout');
-
+//lokal
 Route ::get('lokal',[
     LokalController::class,'index'
 ])->name('lokal.index');
@@ -43,4 +44,7 @@ Route ::get('lokal/create',[
 
 Route ::post('lokal',[lokalController::class,'store'
 ])->name('lokal.store');
-
+//siswa
+Route ::get('siswa',[
+    SiswaController::class,'index'
+])->name('siswa.index');

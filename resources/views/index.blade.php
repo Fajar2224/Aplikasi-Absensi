@@ -3,7 +3,7 @@
 @section('konten')
 <h1>Selamat Datang Di Aplikasi Absensi</h1>
 <div class="col-md-6 col-lg-2 col-xlg-3">
-<a href="#">
+<a href="{{route('siswa.index')}}">
               <div class="card card-hover">
                 <div class="box bg-danger text-center">
                   <h1 class="font-light text-white">
