@@ -32,6 +32,9 @@
         .auth-wrapper {
             min-height: 100vh;
         }
+        h1 {
+            color: gray;
+        }
     </style>
 </head>
 
@@ -70,7 +73,7 @@
             <div class="auth-box bg-dark border-top border-secondary">
                 <div id="loginform">
                     <div class="text-center pt-3 pb-3">
-                        <span class="db"><img src="{{ asset('assets/images/logo.png') }}" alt="logo" /></span>
+                        <span class="db"><h1>Halaman Login</h1></span>
                     </div>
                     <!-- Form -->
                      @if(session()->has('loginError'))

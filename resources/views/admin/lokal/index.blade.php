@@ -1,4 +1,4 @@
-@extends('templates.layout')
+@extends('templates admin.layout')
 @section('halaman_judul','Data Kelas')
 @section('konten')
 <div class="row mt-5">
@@ -28,8 +28,11 @@
                                    @foreach($data_kelas as $dk)
                                    <td>{{$loop->iteration}}</td>
                                    <td>{{$dk->nama_kelas}}</td>
-                                   <td>{{$dk->wali_kelas}}</td>
-                                   <td class="text-center"><a href="{{route('lokal.edit',$dk->id)}}" class="btn btn-warning btn-circle"title="edit data kelas">
+                                   <td>{{ $dk->guru->nama ?? 'Tidak Ada Guru' }}</td> <!-- Tampilkan nama guru -->
+                                   <td class="text-center">
+                                    <a href="{{route('lokal.show',$dk->id)}}" class="btn btn-info btn-circle"title="edit data kelas">
+                                   <i class="fas fa-eye"></i></a>
+                                   <a href="{{route('lokal.edit',$dk->id)}}" class="btn btn-warning btn-circle"title="edit data kelas">
                                    <i class="fas fa-wrench"></i>
                                     </a>
                                     <form action="{{route('lokal.hapus',$dk['id'])}}" method="post" class="d-inline">
@@ -43,6 +46,7 @@
                                    </tr> @endforeach
                       </tbody>
                     </table>
+                    <a href="{{ route('home') }}" class="btn btn-secondary float-right" ><i class="fas fa-arrow-circle-left"></i> Kembali</a>
                   </div>
                 </div>
               </div>

@@ -1,51 +1,72 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Aplikasi Absensi Siswa
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Deskripsi
+Aplikasi Absensi Siswa adalah sebuah sistem berbasis web yang dibangun menggunakan Laravel 11 dan Livewire 3 untuk membantu sekolah dalam mengelola data kehadiran siswa secara digital.
 
-## Tentang Absensi Siswa
+## Database Design
+![Database Design](https://raw.githubusercontent.com/Fajar2224/Aplikasi-Absensi/24ef5577b82a750c8a6481aed81c16df0755f349/Cuplikan%20layar%202025-04-28%20101829.png)
+## Fitur Utama
+- [x] **Manajemen Siswa**: Tambah, edit, dan hapus data siswa. 
+- [x] **Manajemen Kelas**: Kelola daftar kelas dan wali kelas.
+- [x] **Absensi Real-time**: Input dan pemantauan absensi menggunakan Livewire 3.
+- [x] **Laporan Absensi**: Generate laporan harian, mingguan, atau bulanan dalam format PDF/Excel.
+- [x] **Notifikasi**: Kirim notifikasi ke orang tua atau wali melalui email atau WhatsApp.
+- [x] **Autentikasi & Hak Akses**: Role-based access control untuk admin, guru, dan siswa.
 
-Absensi Siswa adalah aplikasi web yang dibangun di atas kerangka kerja Laravel untuk mengelola absensi siswa secara efisien. Aplikasi ini menyediakan antarmuka yang intuitif dan fitur-fitur canggih untuk mempermudah proses pelacakan absensi.
+## Teknologi yang Digunakan
+- **Framework**: Laravel 11
+- **Frontend**: Livewire 3 & Tailwind CSS
+- **Database**: MySQL 
+-**Template**:Mazer ![GitHub code size in bytes](https://github.com/Fajar2224/Aplikasi-Absensi.git)
 
-## Fitur
 
-- Penandaan absensi yang sederhana dan cepat.
-- Laporan absensi yang detail.
-- Integrasi dengan sistem informasi siswa.
-- Notifikasi real-time untuk ketidakhadiran.
-- Akses yang aman dan berbasis peran.
+## Persyaratan Sistem
+- PHP 8.2 atau lebih baru
+- Composer
+- Database MySQL 
 
-## Memulai
+## Instalasi
+### 1. Clone Repository
+```bash
+git clone https://github.com/rizaru22/absensi-siswa.git
+cd absensi-siswa
+```
 
-Untuk memulai dengan Absensi Siswa, ikuti langkah-langkah berikut:
+### 2. Install Dependensi
+```bash
+composer install
+npm install && npm run build
+```
 
-1. Clone repositori: `git clone https://github.com/yourusername/absensi-siswa.git`
-2. Instal dependensi: `composer install`
-3. Atur variabel lingkungan Anda: `cp .env.example .env`
-4. Hasilkan kunci aplikasi: `php artisan key:generate`
-5. Jalankan migrasi: `php artisan migrate`
-6. Jalankan aplikasi: `php artisan serve`
+### 3. Konfigurasi Lingkungan
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+Edit file `.env` dan sesuaikan konfigurasi database.
 
-## Belajar Laravel
+### 4. Migrasi Database
+```bash
+php artisan migrate --seed
+```
 
-Absensi Siswa dibangun di atas Laravel, yang memiliki [dokumentasi](https://laravel.com/docs) yang luas dan perpustakaan tutorial video yang komprehensif di [Laracasts](https://laracasts.com).
+### 5. Menjalankan Server
+```bash
+php artisan serve
+```
+Akses aplikasi di `http://localhost:8000`
 
-## Berkontribusi
+## Penggunaan
+- Login sebagai admin untuk mengelola data siswa dan kelas.
+- Guru dapat menginput absensi siswa secara real-time.
+- Siswa dapat melihat riwayat absensi mereka.
+- Laporan dapat diunduh dalam format PDF atau Excel.
 
-Terima kasih telah mempertimbangkan untuk berkontribusi pada Absensi Siswa! Silakan baca [panduan kontribusi](https://laravel.com/docs/contributions) untuk detail tentang cara berkontribusi.
-
-## Kode Etik
-
-Untuk memastikan lingkungan yang ramah, harap tinjau dan patuhi [Kode Etik](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Kerentanan Keamanan
-
-Jika Anda menemukan kerentanan keamanan dalam Absensi Siswa, harap kirim email ke pemelihara proyek. Semua kerentanan keamanan akan segera ditangani.
+## Kontribusi
+Jika Anda ingin berkontribusi, silakan fork repository ini dan ajukan pull request.
 
 ## Lisensi
+Proyek ini dirilis di bawah lisensi MIT.
 
-Absensi Siswa adalah perangkat lunak sumber terbuka yang dilisensikan di bawah [lisensi MIT](https://opensource.org/licenses/MIT).
+---
+Dibuat dengan ❤️ menggunakan Laravel 11 & Livewire 3.

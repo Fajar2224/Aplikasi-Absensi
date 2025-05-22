@@ -17,7 +17,11 @@ return new class extends Migration
             $table->string('nama');
             $table->string('alamat');
             $table->string('no_telp');
-            $table->foreignId('jurusans_id')->references('id')->on('jurusans')->onDelete('cascade');
+            $table->string('username');
+            $table->string('password');
+            $table->foreignId('lokals_id')->constrained('lokals')->onDelete('cascade');
+            $table->foreignId('jurusans_id')->constrained('jurusans')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

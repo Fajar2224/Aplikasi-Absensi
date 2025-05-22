@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\lokal;
 use App\Models\siswa;
+use App\Models\jurusan;
 use Illuminate\Http\Request;
 
 class SiswaController extends Controller
@@ -10,65 +13,102 @@ class SiswaController extends Controller
     //
     public function index()
     {
-        $data_siswa=Siswa::all();
-        return view('siswa.index',[
-            'menu'=>'siswa',
-            'data_siswa'=>$data_siswa
+        $data_siswa = Siswa::with('user','lokal','jurusan')->get(); 
+        return view('admin.siswa.index', [
+            'menu' => 'siswa',
+            'data_siswa' => $data_siswa
         ]);
     }
-
     public function create()
     {
-        return view('siswa.create',[
-            'menu'=>'siswa'
+        $kelas = Lokal::all(); 
+        $jurusan = Jurusan::all();
+        return view('admin.siswa.create', [
+            'menu' => 'siswa',
+            'kelas' => $kelas,
+            'jurusan' => $jurusan
         ]);
     }
-    public function store(Request $request)
+    public function show($id)
+{
+    $siswa = Siswa::with(['jurusan',])->findOrFail($id); 
+    return view('admin.siswa.show', [
+        'menu' => 'siswa',
+        'siswa' => $siswa
+    ]);
+}
+     public function store(Request $request)
     {
-       $validasi=$request->validate([
-        "nisn"=>"required",
-        "nama"=>"required",
-        "alamat"=>"required",
-        "no_telp"=>"required",
-        "jurusans_id"=>"required"
-       ]);
-       $data_baru=New Siswa();
-       $data_baru->nisn=$validasi['nisn'];
-       $data_baru->nama=$validasi['nama'];
-       $data_baru->alamat=$validasi['alamat'];
-       $data_baru->no_telp=$validasi['no_telp'];
-       $data_baru->jurusans_id=$validasi['jurusans_id'];
-       $data_baru->save();
-       
-       return redirect(route('siswa.index'));
-    }
+        
+        $validasi = $request->validate([
+            'NISN' => 'required',
+            'nama' => 'required',
+            'no_telp' => 'required|max:13',
+            'jurusans_id' => 'required',
+            'alamat' => 'required|max:255',
+            'username' => 'required',
+            'password' => 'required',
+            'lokals_id' => 'required',
+           
+        ], [
+            'NISN.required' => 'NISN harus diisi',
+            'nama.required' => 'Nama harus diisi',
+            'no_telp.required' => 'No Telepon harus diisi',
+            'jurusan.required' => 'Jurusan harus diisi',
+            'username.required' => 'Username harus diisi',
+            'password.required' => 'Password harus diisi',
+            'lokals_id.required' => 'Lokal harus diisi',
 
-    public function edit($a_id)
-    {
-        $data_siswa=Siswa::find($a_id);
-        return view('siswa.edit',[
-            'menu'=>'siswa',
-            'data_siswa'=>$data_siswa
-        ]);
-    }
 
-    public function update()
-    {
-        $validasi=request()->validate([
-            "id"=>"required",
-            "nama_siswa"=>"required",
-            "jurusans_id"=>"required",
-            "gurus_id"=>"required"
         ]);
-        $data_siswa=Siswa::find($validasi['id']);
-        $data_siswa->nisn=$validasi['nisn'];
-        $data_siswa->nama_siswa=$validasi['nama_siswa'];
-        $data_siswa->alamat=$validasi['alamat'];
-        $data_siswa->no_telp=$validasi['no_telp'];
-        $data_siswa->jurusans_id=$validasi['jurusans_id'];
-        $data_siswa->save();
+
+        $user = new User;
+        $user->username = $validasi['username'];
+        $user->password = bcrypt($validasi['password']);
+        $user->status = 'siswa'; // Set  user sebagai siswa
+        $user->save();
+
+        $siswa = new siswa;
+        $siswa->NISN = $validasi['NISN'];
+        $siswa->nama = $validasi['nama'];
+        $siswa->no_telp = $validasi['no_telp'];
+        $siswa->jurusans_id = $validasi['jurusans_id'];
+        $siswa->alamat = $validasi['alamat'];
+        $siswa->username = $validasi['username'];
+        $siswa->password = bcrypt($validasi['password']);
+        $siswa->lokals_id = $validasi['lokals_id'];
+        $siswa->users_id = $user->id; // Ambil ID user yang baru saja dibuat
+
+        $siswa->save();
+
         return redirect(route('siswa.index'));
     }
+    public function edit($id)
+{
+    $siswa = Siswa::findOrFail($id);
+    $jurusan = Jurusan::all();
+    return view('admin.siswa.edit', [
+        'menu' => 'siswa',
+        'siswa' => $siswa,
+        'jurusan' => $jurusan
+    ]);
+}
+
+public function update(Request $request, $id)
+{
+    $validasi = $request->validate([
+        'nama' => 'required|max:100',
+        'alamat' => 'required|max:255',
+        'no_telp' => 'required|numeric|digits_between:10,15',
+        'jurusans_id' => 'required|exists:jurusans,id',
+        
+    ]);
+
+    $siswa = Siswa::findOrFail($id);
+    $siswa->update($validasi);
+
+    return redirect()->route('siswa.index')->with('success', 'Data siswa berhasil diperbarui.');
+}
     public function destroy($a_id)
     {
         $data_siswa=Siswa::find($a_id);

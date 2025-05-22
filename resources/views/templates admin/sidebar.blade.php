@@ -19,10 +19,11 @@
                         <!-- Logo text -->
                         <span class="logo-text ms-2">
                             <!-- dark Logo text -->
-                            <img
-                                src="{{ asset('assets/images/logo-text.png') }}"
-                                alt="homepage"
-                                class="light-logo" />
+                          <h3> Absen Dulu </h3>
+                            <!-- Light Logo text -->
+                            <!-- <img src="../assets/images/logo-text.png" alt="homepage" class="light-logo" /> -->
+                            <!-- <h4> Absen Dulu </h4> -->
+                           
                         </span>
                         <!-- Logo icon -->
                         <!-- <b class="logo-icon"> -->
@@ -127,8 +128,53 @@
                         <li class="sidebar-item">
                             <a
                                 class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="{{ route('dashboard') }}"
-                                aria-expanded="false"><i class="mdi mdi-settings"></i><span class="hide-menu">Settings</span></a>
+                                href="{{route('siswa.index')}}"
+                                aria-expanded="false"> <i class="fas fa-user"></i><span class="hide-menu">Siswa</span></a>
+                        </li>
+
+                    </ul>
+                    <ul id="sidebarnav" class="pt-4">
+                        <li class="sidebar-item">
+                            <a
+                                class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{route('lokal.index')}}"
+                                aria-expanded="false">  <i class="fas fa-home"></i><span class="hide-menu">Kelas</span></a>
+                        </li>
+
+                    </ul>
+                    <ul id="sidebarnav" class="pt-4">
+                        <li class="sidebar-item">
+                            <a
+                                class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{route('guru.index')}}"
+                                aria-expanded="false"> <i class="fas fa-user-circle"></i><span class="hide-menu">Guru</span></a>
+                        </li>
+
+                    </ul>
+                    <ul id="sidebarnav" class="pt-4">
+                        <li class="sidebar-item">
+                            <a
+                                class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{route('jurusan.index')}}"
+                                aria-expanded="false"> <i class="fas fa-address-book"></i><span class="hide-menu">Jurusan</span></a>
+                        </li>
+
+                    </ul>
+                    <ul id="sidebarnav" class="pt-4">
+                        <li class="sidebar-item">
+                            <a
+                                class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{route('mapel.index')}}"
+                                aria-expanded="false"> <i class="fas fa-address-book"></i><span class="hide-menu">Mapel</span></a>
+                        </li>
+
+                    </ul>
+                    <ul id="sidebarnav" class="pt-4">
+                        <li class="sidebar-item">
+                            <a
+                                class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{ route('user.index') }}"
+                                aria-expanded="false"> <i class="fas fa-address-book"></i><span class="hide-menu">User</span></a>
                         </li>
 
                     </ul>

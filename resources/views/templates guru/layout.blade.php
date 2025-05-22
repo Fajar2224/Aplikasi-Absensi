@@ -55,7 +55,7 @@
       data-sidebar-position="absolute"
       data-header-position="absolute"
       data-boxed-layout="full"
-    >@include('templates.sidebar')
+    >@include('templates guru.sidebar')
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->

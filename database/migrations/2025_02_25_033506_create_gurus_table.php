@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('nama');
             $table->string('alamat');
             $table->string('no_telp');
-            $table->string('mapel');
-            $table->foreignId('users_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('mapels_id')->nullable()->constrained('mapels')->onDelete('cascade');
+            $table->foreignId('users_id')->nullable()->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

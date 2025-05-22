@@ -1,11 +1,11 @@
-@extends('templates.layout')
+@extends('templates admin.layout')
 @section('halaman_judul','Data Kelas')
 @section('konten')
 <div class="row mt-5">
     <div class="col-6">
   <div class="card">
     <div class="card-header">
-Manajemen Data Kelas
+Form Menambah Data Kelas
     </div>
     <div class="card-body">
  <form action="{{route('lokal.store')}}" method="post">
@@ -15,16 +15,24 @@ Manajemen Data Kelas
         <input type="text" name="nama_kelas" id="nama_kelas" 
         class="form-control">
         </div>
-   <div class="col mt-2">
-        <label for="jurusans_id" class="text-gray-900">Jurusan</label>
-        <input type="text" name="jurusans_id" id="jurusans_id" 
-        class="form-control">
-        </div>
-   <div class="col mt-2">
-        <label for="gurus_id" class="text-gray-900">Wali Kelas</label>
-        <input type="text" name="gurus_id" id="gurus_id" 
-        class="form-control">
-        </div>
+        <div class="col mt-2">
+    <label for="jurusans_id" class="text-gray-900">Jurusan</label>
+    <select name="jurusans_id" id="jurusans_id" class="form-control">
+        <option value="" disabled selected>Pilih Jurusan</option>
+        @foreach($jurusan as $j)
+            <option value="{{ $j->id }}">{{ $j->nama_jurusan }}</option>
+        @endforeach
+    </select>
+</div>
+<div class="col mt-2">
+    <label for="gurus_id" class="text-gray-900">Wali Kelas</label>
+    <select name="gurus_id" id="gurus_id" class="form-control">
+        <option value="" disabled selected>Pilih Guru</option>
+        @foreach($guru as $g)
+            <option value="{{ $g->id }}">{{ $g->nama }}</option>
+        @endforeach
+    </select>
+</div>
         <div class="col mt-2">
             <button type="submit" class="btn btn-md btn-primary
             float-right">Simpan</button>
